@@ -1,9 +1,106 @@
-using System;
 
-class Program
+Console.WriteLine("Welcome to the Journal Program!");
+Console.WriteLine();
+Console.WriteLine("Main Menu: ");
+Console.WriteLine("1. Write an entry");
+Console.WriteLine("2. Display entry history");
+Console.WriteLine("3. Load file");
+Console.WriteLine("4. Save entry to file");
+Console.WriteLine("5. Exit");
+Console.Write("Select an option: ");
+int selectedOption = 0;
+selectedOption = int.Parse(Console.ReadLine());
+
+while (selectedOption != 5)
 {
-    static void Main(string[] args)
+
+    if (selectedOption == 1)
     {
-        Console.WriteLine("Hello World! This is the Journal Project.");
+        Console.WriteLine();
+        Console.WriteLine("Write an entry: ");
+        Console.WriteLine();
+        PromptGenerator prompt = new PromptGenerator();
+        prompt.GetRandomPrompt();
+        Console.WriteLine();
+        Entry et = new Entry();
+        et._entryText = Console.ReadLine();
+        Journal ae = new Journal();
+        ae.AddEntry(et); //I think that the "newEntry" has to be in the same instance but I could be wrong.
+        //I might need to add the prompt and the entry to the list of entries.
+        Console.WriteLine();        
+        Console.WriteLine();
+
+        
+
+        Console.WriteLine();
+        Console.WriteLine("Main Menu: ");
+        Console.WriteLine("1. Write an entry");
+        Console.WriteLine("2. Display entry history");
+        Console.WriteLine("3. Load file");
+        Console.WriteLine("4. Save entry to file");
+        Console.WriteLine("5. Exit");
+        Console.Write("Select an option: ");
+        selectedOption = int.Parse(Console.ReadLine());
+    }
+
+    else if (selectedOption == 2)
+    {
+        Console.WriteLine();
+        Console.WriteLine("Entry History:");
+        Console.WriteLine();
+        Journal eh = new Journal();
+        eh.DisplayAll();
+
+        Console.WriteLine();
+        Console.WriteLine("Main Menu: ");
+        Console.WriteLine("1. Write an entry");
+        Console.WriteLine("2. Display entry history");
+        Console.WriteLine("3. Load file");
+        Console.WriteLine("4. Save entry to file");
+        Console.WriteLine("5. Exit");
+        Console.Write("Select an option: ");
+        selectedOption = int.Parse(Console.ReadLine());
+    }
+
+    else if (selectedOption == 3)
+    {
+        Console.WriteLine();
+        Console.WriteLine("Type in name of file: ");
+        string file = Console.ReadLine();
+        Journal lf = new Journal();
+        lf.LoadFromFile(file);
+
+        Console.WriteLine();
+        Console.WriteLine("Main Menu: ");
+        Console.WriteLine("1. Write an entry");
+        Console.WriteLine("2. Display entry history");
+        Console.WriteLine("3. Load file");
+        Console.WriteLine("4. Save entry to file");
+        Console.WriteLine("5. Exit");
+        Console.Write("Select an option: ");
+        selectedOption = int.Parse(Console.ReadLine());
+    }
+
+    else if (selectedOption == 4)
+    {
+        Console.WriteLine();
+        Console.WriteLine("Type in name of file: ");
+        string file = Console.ReadLine();
+        Journal sf = new Journal();
+        sf.SaveToFile(file);
+
+        Console.WriteLine();
+        Console.WriteLine("Main Menu: ");
+        Console.WriteLine("1. Write an entry");
+        Console.WriteLine("2. Display entry history");
+        Console.WriteLine("3. Load file");
+        Console.WriteLine("4. Save entry to file");
+        Console.WriteLine("5. Exit");
+        Console.Write("Select an option: ");
+        selectedOption = int.Parse(Console.ReadLine());
     }
 }
+Console.WriteLine();
+Console.WriteLine("Come back and write another entry!");
+
+
