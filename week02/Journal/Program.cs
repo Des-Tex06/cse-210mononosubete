@@ -1,4 +1,3 @@
-
 Console.WriteLine("Welcome to the Journal Program!");
 Console.WriteLine();
 Console.WriteLine("Main Menu: ");
@@ -16,18 +15,22 @@ while (selectedOption != 5)
 
     if (selectedOption == 1)
     {
+        Journal ne = new Journal();
+        DateTime _theCurrentDate = DateTime.Now;
+        string _date = _theCurrentDate.ToShortDateString();
+        ne.AddEntry();
         Console.WriteLine();
         Console.WriteLine("Write an entry: ");
         Console.WriteLine();
         PromptGenerator prompt = new PromptGenerator();
-        prompt.GetRandomPrompt();
+        string _promptText = prompt.GetRandomPrompt();
+        ne.AddEntry(_promptText);
         Console.WriteLine();
-        Entry et = new Entry();
-        et._entryText = Console.ReadLine();
-        Journal ae = new Journal();
-        ae.AddEntry(et); //I think that the "newEntry" has to be in the same instance but I could be wrong.
+        string _entryText = Console.ReadLine();
+        ne.AddEntry(_entryText);
+        //I think that the "newEntry" has to be in the same instance but I could be wrong.
         //I might need to add the prompt and the entry to the list of entries.
-        Console.WriteLine();        
+        Console.WriteLine();       
         Console.WriteLine();
 
         
@@ -66,9 +69,9 @@ while (selectedOption != 5)
     {
         Console.WriteLine();
         Console.WriteLine("Type in name of file: ");
-        string file = Console.ReadLine();
+        string filename = Console.ReadLine();
         Journal lf = new Journal();
-        lf.LoadFromFile(file);
+        lf.LoadFromFile(filename);
 
         Console.WriteLine();
         Console.WriteLine("Main Menu: ");
