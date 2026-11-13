@@ -17,17 +17,17 @@ while (selectedOption != 5)
     {
         Journal ne = new Journal();
         DateTime _theCurrentDate = DateTime.Now;
-        string _date = _theCurrentDate.ToShortDateString();
-        ne.AddEntry();
+        Entry _date = _theCurrentDate.ToShortDateString();
+        ne.AddEntry(_date);
         Console.WriteLine();
         Console.WriteLine("Write an entry: ");
         Console.WriteLine();
         PromptGenerator prompt = new PromptGenerator();
-        string _promptText = prompt.GetRandomPrompt();
-        ne.AddEntry(_promptText);
+        Entry _addedPrompt = prompt.GetRandomPrompt();
+        ne.AddEntry(_addedPrompt);
         Console.WriteLine();
-        string _entryText = Console.ReadLine();
-        ne.AddEntry(_entryText);
+        Entry _addedEntry = Console.ReadLine();
+        ne.AddEntry(_addedEntry);
         //I think that the "newEntry" has to be in the same instance but I could be wrong.
         //I might need to add the prompt and the entry to the list of entries.
         Console.WriteLine();       
