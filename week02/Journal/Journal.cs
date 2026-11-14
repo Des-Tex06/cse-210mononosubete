@@ -14,6 +14,7 @@ public class Journal
     {
         foreach (Entry entry in _entries)
         {
+            Console.WriteLine("Entry History:");
             entry.DisplayEntry(); 
         }
     }

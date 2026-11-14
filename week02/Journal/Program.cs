@@ -9,32 +9,28 @@ Console.WriteLine("5. Exit");
 Console.Write("Select an option: ");
 int selectedOption = 0;
 selectedOption = int.Parse(Console.ReadLine());
-
 while (selectedOption != 5)
 {
-
     if (selectedOption == 1)
     {
-        Journal ne = new Journal();
+        Entry newEntry = new Entry();
         DateTime _theCurrentDate = DateTime.Now;
-        Entry _date = _theCurrentDate.ToShortDateString();
-        ne.AddEntry(_date);
+        newEntry._date = _theCurrentDate.ToShortDateString();
+        //ne.AddEntry(newEntry._date);
         Console.WriteLine();
         Console.WriteLine("Write an entry: ");
         Console.WriteLine();
         PromptGenerator prompt = new PromptGenerator();
-        Entry _addedPrompt = prompt.GetRandomPrompt();
-        ne.AddEntry(_addedPrompt);
+        newEntry._promptText = prompt.GetRandomPrompt();
+        //ne.AddEntry(_promptText);
         Console.WriteLine();
-        Entry _addedEntry = Console.ReadLine();
-        ne.AddEntry(_addedEntry);
+        newEntry._entryText = Console.ReadLine();
+        Journal ne = new Journal();
+        ne.AddEntry(newEntry);
+        //ne.AddEntry(_entryText);
         //I think that the "newEntry" has to be in the same instance but I could be wrong.
-        //I might need to add the prompt and the entry to the list of entries.
-        Console.WriteLine();       
+        //I might need to add the prompt and the entry to the list of entries.     
         Console.WriteLine();
-
-        
-
         Console.WriteLine();
         Console.WriteLine("Main Menu: ");
         Console.WriteLine("1. Write an entry");
@@ -45,15 +41,12 @@ while (selectedOption != 5)
         Console.Write("Select an option: ");
         selectedOption = int.Parse(Console.ReadLine());
     }
-
     else if (selectedOption == 2)
     {
         Console.WriteLine();
-        Console.WriteLine("Entry History:");
+        Journal ae = new Journal();
+        ae.DisplayAll();
         Console.WriteLine();
-        Journal eh = new Journal();
-        eh.DisplayAll();
-
         Console.WriteLine();
         Console.WriteLine("Main Menu: ");
         Console.WriteLine("1. Write an entry");
@@ -64,7 +57,6 @@ while (selectedOption != 5)
         Console.Write("Select an option: ");
         selectedOption = int.Parse(Console.ReadLine());
     }
-
     else if (selectedOption == 3)
     {
         Console.WriteLine();
@@ -72,7 +64,6 @@ while (selectedOption != 5)
         string filename = Console.ReadLine();
         Journal lf = new Journal();
         lf.LoadFromFile(filename);
-
         Console.WriteLine();
         Console.WriteLine("Main Menu: ");
         Console.WriteLine("1. Write an entry");
@@ -83,7 +74,6 @@ while (selectedOption != 5)
         Console.Write("Select an option: ");
         selectedOption = int.Parse(Console.ReadLine());
     }
-
     else if (selectedOption == 4)
     {
         Console.WriteLine();
@@ -91,7 +81,6 @@ while (selectedOption != 5)
         string file = Console.ReadLine();
         Journal sf = new Journal();
         sf.SaveToFile(file);
-
         Console.WriteLine();
         Console.WriteLine("Main Menu: ");
         Console.WriteLine("1. Write an entry");
